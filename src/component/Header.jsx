@@ -3,29 +3,31 @@ import logoImg from '../assets/header/logo-img.png'
 import logoNCA from '../assets/header/logo-NCA.png'
 import loginImg from '../assets/header/login.png'
 
+import { Link } from "react-router-dom";
+
 function Header(){
     return(
         <>
             <div className="header-container">
-                <div className="header-logo">
+                <Link to="/NCA" className="header-logo">
                     <img src={logoImg} alt="Logo Img" className='logo-img'/>
                     <img src={logoNCA} alt="Logo NCA" className='logo-NCA'/>
-                </div>
+                </Link>
                 <div className="header-navbar">
                     <p>
-                        <a href="#">Home</a>
+                        <Link to="/NCA">Home</Link>
                     </p>
                     <p>
-                        <a href="#">Contribute</a>
+                        <Link to="/NCA/contribute">Contribute</Link>
                     </p>
                     <p>
-                        <a href="#">Purchase CC</a>
+                        <Link to="/NCA/purchaseCC">Purchase CC</Link>
                     </p>
                 </div>
                 <div className="header-profile">
-                    <a href="#">
+                    <Link to="/NCA/login">
                         <img src={loginImg} alt="Login Img" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </>

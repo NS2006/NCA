@@ -6,7 +6,7 @@ function HomeCard(props){
     let imgUrl = props.imgUrl;
 
     if(imgUrl !== "#"){
-        imgUrl = `./public/${props.imgUrl}`;
+        imgUrl = `/NCA/${props.imgUrl}`;
     }
 
     return(
@@ -17,6 +17,7 @@ function HomeCard(props){
                     <h2>{props.text2}</h2>
                     <p>{props.text3}</p>
                 </div>
+
                 <div className="homeCard-right">
                     <img src={imgUrl} alt="Card Image" />
                 </div>

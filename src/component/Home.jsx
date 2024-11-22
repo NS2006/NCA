@@ -50,6 +50,21 @@ import vect2 from '../assets/index/vector2.png'
 </div> */}
 
 function Home(){
+    document.title = "Home Page | NCA";
+
+    // Nature Calls
+    const [ncCount, setncCount] = useState(0);
+
+    function clickHandlingNatureCalls(mode){
+        if(mode === 0){
+            setncCount(() => 0);
+        } else{
+            setncCount(() => 1);
+        }
+    }
+
+
+    // Home Card
     const listCard = [
         [
             "Discover",
@@ -95,18 +110,20 @@ function Home(){
         ]
     ]
 
-    const [count, setCount] = useState("0");
-    const [count2, setCount2] = useState("1");
-    const [count3, setCount3] = useState("2");
+    const [homeCardCount, sethomeCardCount] = useState("0");
+    const [homeCardCount2, sethomeCardCount2] = useState("1");
+    const [homeCardCount3, sethomeCardCount3] = useState("2");
 
-    function clickHandling(mode) {
-        setCount((prevCount) => {
-            const newCount = mode === 0 ? Math.max(0, prevCount - 1) : Math.min(3, prevCount + 1);
-            setCount2(newCount + 1);
-            setCount3(newCount + 2);
-            return newCount;
+    function clickHandlingHomeCard(mode) {
+        sethomeCardCount((prevhomeCardCount) => {
+            const newhomeCardCount = mode === 0 ? Math.max(0, prevhomeCardCount - 1) : Math.min(3, prevhomeCardCount + 1);
+            sethomeCardCount2(newhomeCardCount + 1);
+            sethomeCardCount3(newhomeCardCount + 2);
+            return newhomeCardCount;
         });
     }
+
+
 
     return(
         <>
@@ -122,25 +139,25 @@ function Home(){
 
                 <div className="nc-right">
                     <div className="nc-title">
-                        <h1 className='nc-title1'>Nature</h1>
-                        <h1 className='nc-title2'>Calls</h1>
+                        <h1>Nature</h1>
+                        <h1><div className="nc-title-box"></div>Calls</h1>
                     </div>
 
                     <div className="nc-desc">
-                        Introducing <b>NCA</b> (Nature's Call to Action): a vibrant movement dedicated to empowering individuals to confront ecological challenges head-on. With powerful taglines like <b>"Act Now for a Greener Tomorrow"</b> and <b>"Your Journey Towards a Sustainable Future"</b>, NCA ignites a sense of urgency and personal responsibility, inspiring everyone to take meaningful eco-friendly actions—from recycling to community cleanups. Our branding, characterized by harmonious shades of greens, blues, and earth tones, reflects our commitment to the environment while embodying an approachable and contemporary aesthetic. Explore our engaging website to uncover actionable eco-tips, share impactful stories, and connect with a community of like-minded individuals committed to nurturing our planet. Together, we can make a difference today for a sustainable tomorrow!
+                        {
+                            ncCount === 0 ? 
+                            <p>Introducing <b>NCA</b> (Nature's Call to Action): a vibrant movement dedicated to empowering individuals to confront ecological challenges head-on. With powerful taglines like <b>"Act Now for a Greener Tomorrow"</b> and <b>"Your Journey Towards a Sustainable Future"</b>, NCA ignites a sense of urgency and personal responsibility, inspiring everyone to take meaningful eco-friendly actions—from recycling to community cleanups. Our branding, characterized by harmonious shades of greens, blues, and earth tones, reflects our commitment to the environment while embodying an approachable and contemporary aesthetic. Explore our engaging website to uncover actionable eco-tips, share impactful stories, and connect with a community of like-minded individuals committed to nurturing our planet. Together, we can make a difference today for a sustainable tomorrow!</p> 
+                            : 
+                            <p><b>A Carbon Credit</b> is a permit or certificate that represents the right to emit <b>one metric ton of carbon dioxide (CO₂)</b> or its equivalent in other greenhouse gases. These credits are part of a market-based approach to reduce global carbon emissions, where companies or organizations that reduce their emissions below a set limit can sell their excess credits to others that exceed their emission quotas. The goal is to create a financial incentive for businesses to adopt cleaner technologies and reduce their environmental impact, contributing to global efforts to combat climate change.</p>
+                        }
                     </div>
 
                     <div className="nc-button">
                         <a href="#">
                             <button>ACT NOW</button>
                         </a>
-                        <a href="#">
-                            <button>What is NCA?</button>
-                        </a>
-                        <a href="#">
-                            <button>What is Carbon Credit?</button>
-                        </a>
-                        
+                        <button className='nc-desc-button' onClick={() => {clickHandlingNatureCalls(0)}}>What is NCA?</button>
+                        <button className='nc-desc-button' onClick={() => {clickHandlingNatureCalls(1)}}>What is Carbon Credit?</button>        
                     </div>
                 </div>
             </div>
@@ -150,25 +167,25 @@ function Home(){
             <div className="homeCard-container">
                 <div className="homeCard-content">
                     <div className="homecard-icon-container">
-                        <img src={prevIcon} alt="Prev Icon" className='homeCard-icon' id='prevIcon' onClick={() => clickHandling(0)} style={{visibility: count <= 0 ? "hidden" : "visible"}}/>
+                        <img src={prevIcon} alt="Prev Icon" className='homeCard-icon' id='prevIcon' onClick={() => clickHandlingHomeCard(0)} style={{visibility: homeCardCount <= 0 ? "hidden" : "visible"}}/>
                     </div>
 
-                    <HomeCard text1={listCard[count][0]} text2={listCard[count][1]} text3={listCard[count][2]} imgUrl={listCard[count][3]} clickUrl={listCard[count][4]}/>
+                    <HomeCard text1={listCard[homeCardCount][0]} text2={listCard[homeCardCount][1]} text3={listCard[homeCardCount][2]} imgUrl={listCard[homeCardCount][3]} clickUrl={listCard[homeCardCount][4]}/>
 
-                    <HomeCard text1={listCard[count2][0]} text2={listCard[count2][1]} text3={listCard[count2][2]} imgUrl={listCard[count2][3]} clickUrl={listCard[count2][4]}/>
+                    <HomeCard text1={listCard[homeCardCount2][0]} text2={listCard[homeCardCount2][1]} text3={listCard[homeCardCount2][2]} imgUrl={listCard[homeCardCount2][3]} clickUrl={listCard[homeCardCount2][4]}/>
 
-                    <HomeCard text1={listCard[count3][0]} text2={listCard[count3][1]} text3={listCard[count3][2]} imgUrl={listCard[count3][3]} clickUrl={listCard[count3][4]}/>
+                    <HomeCard text1={listCard[homeCardCount3][0]} text2={listCard[homeCardCount3][1]} text3={listCard[homeCardCount3][2]} imgUrl={listCard[homeCardCount3][3]} clickUrl={listCard[homeCardCount3][4]}/>
 
                     <div className="homecard-icon-container">
-                        <img src={nextIcon} alt="Next Icon" className='homeCard-icon' id='nextIcon' onClick={() => clickHandling(1)} style={{visibility: count >= 3 ? "hidden" : "visible"}}/>
+                        <img src={nextIcon} alt="Next Icon" className='homeCard-icon' id='nextIcon' onClick={() => clickHandlingHomeCard(1)} style={{visibility: homeCardCount >= 3 ? "hidden" : "visible"}}/>
                     </div>
                 </div>
 
                 <div className="homeCard-dot-container">
-                    <div className="homeCard-dot" style={{backgroundColor: count <= 0 ? "#505050" : "#D9D9D9"}}></div>
-                    <div className="homeCard-dot" style={{backgroundColor: count == 1 ? "#505050" : "#D9D9D9"}}></div>
-                    <div className="homeCard-dot" style={{backgroundColor: count == 2 ? "#505050" : "#D9D9D9"}}></div>
-                    <div className="homeCard-dot" style={{backgroundColor: count >= 3 ? "#505050" : "#D9D9D9"}}></div>
+                    <div className="homeCard-dot" style={{backgroundColor: homeCardCount <= 0 ? "#505050" : "#D9D9D9"}}></div>
+                    <div className="homeCard-dot" style={{backgroundColor: homeCardCount == 1 ? "#505050" : "#D9D9D9"}}></div>
+                    <div className="homeCard-dot" style={{backgroundColor: homeCardCount == 2 ? "#505050" : "#D9D9D9"}}></div>
+                    <div className="homeCard-dot" style={{backgroundColor: homeCardCount >= 3 ? "#505050" : "#D9D9D9"}}></div>
                 </div>
             </div>
 
@@ -190,7 +207,7 @@ function Home(){
                                 <div className="actEarn-left">
                                     <ol>
                                         <li>
-                                            <b>Act</b>: Start your journey by taking action! Engage in eco-friendly practice such as using a reusable bag, recycled stuff, or even doing volunteer cleanup. <b>Every small step counts</b> toward a greener world.
+                                            <b>Act</b>: Start your journey by taking action! Engage in eco-friendly practice such as using a reusable bag, recycled stuff, or even doing volunteer cleanup. <b>Every small step homeCardCounts</b> toward a greener world.
                                         </li> <br />
 
                                         <li>

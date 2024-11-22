@@ -1,0 +1,24 @@
+hr{
+    background-color: rgb(255, 255, 255);
+    color: white;
+    height: 5px;
+    margin-bottom: 2em;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.logReg-form-container{
+    background-color: #627A70;
+    padding: 1em 3em;
+    margin: 2em;
+    width: 50%;
+}
+
+.form-h1{
+    text-align: center;
+}
